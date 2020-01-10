@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,12 +13,15 @@
 		933A4BFD23C6FD2D00F4357F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933A4BFB23C6FD2D00F4357F /* Main.storyboard */; };
 		933A4BFF23C6FD2E00F4357F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933A4BFE23C6FD2E00F4357F /* Assets.xcassets */; };
 		933A4C0223C6FD2E00F4357F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933A4C0023C6FD2E00F4357F /* LaunchScreen.storyboard */; };
-		933A4C0E23C6FD6700F4357F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0A23C6FD6600F4357F /* NetworkManager.swift */; };
+		933A4C0E23C6FD6700F4357F /* APIRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0A23C6FD6600F4357F /* APIRoutable.swift */; };
 		933A4C0F23C6FD6700F4357F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0B23C6FD6600F4357F /* API.swift */; };
-		933A4C1023C6FD6700F4357F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0C23C6FD6700F4357F /* EndPoints.swift */; };
-		933A4C1123C6FD6700F4357F /* NetworkManager+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0D23C6FD6700F4357F /* NetworkManager+Errors.swift */; };
+		933A4C1123C6FD6700F4357F /* APIRoutable+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0D23C6FD6700F4357F /* APIRoutable+Errors.swift */; };
 		933A4C1523C6FF7300F4357F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 933A4C1223C6FF7200F4357F /* README.md */; };
 		933A4C1623C6FF7300F4357F /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 933A4C1323C6FF7300F4357F /* LICENSE.txt */; };
+		933A4C1D23C706A500F4357F /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 933A4C1C23C706A500F4357F /* ObjectMapper */; };
+		933A4C2023C706EF00F4357F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 933A4C1F23C706EF00F4357F /* Alamofire */; };
+		933A4C2423C70CAA00F4357F /* NSError+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2323C70CAA00F4357F /* NSError+Addition.swift */; };
+		933A4C2823C80C4200F4357F /* FASessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2723C80C4200F4357F /* FASessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +33,13 @@
 		933A4BFE23C6FD2E00F4357F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		933A4C0123C6FD2E00F4357F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		933A4C0323C6FD2E00F4357F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		933A4C0A23C6FD6600F4357F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		933A4C0A23C6FD6600F4357F /* APIRoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRoutable.swift; sourceTree = "<group>"; };
 		933A4C0B23C6FD6600F4357F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		933A4C0C23C6FD6700F4357F /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
-		933A4C0D23C6FD6700F4357F /* NetworkManager+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Errors.swift"; sourceTree = "<group>"; };
+		933A4C0D23C6FD6700F4357F /* APIRoutable+Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIRoutable+Errors.swift"; sourceTree = "<group>"; };
 		933A4C1223C6FF7200F4357F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		933A4C1323C6FF7300F4357F /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		933A4C2323C70CAA00F4357F /* NSError+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Addition.swift"; sourceTree = "<group>"; };
+		933A4C2723C80C4200F4357F /* FASessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FASessionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933A4C1D23C706A500F4357F /* ObjectMapper in Frameworks */,
+				933A4C2023C706EF00F4357F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,9 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				933A4C0B23C6FD6600F4357F /* API.swift */,
-				933A4C0C23C6FD6700F4357F /* EndPoints.swift */,
-				933A4C0A23C6FD6600F4357F /* NetworkManager.swift */,
-				933A4C0D23C6FD6700F4357F /* NetworkManager+Errors.swift */,
+				933A4C2723C80C4200F4357F /* FASessionManager.swift */,
+				933A4C0A23C6FD6600F4357F /* APIRoutable.swift */,
+				933A4C0D23C6FD6700F4357F /* APIRoutable+Errors.swift */,
+				933A4C2323C70CAA00F4357F /* NSError+Addition.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -109,6 +116,10 @@
 			dependencies = (
 			);
 			name = FANetworkLayer;
+			packageProductDependencies = (
+				933A4C1C23C706A500F4357F /* ObjectMapper */,
+				933A4C1F23C706EF00F4357F /* Alamofire */,
+			);
 			productName = FANetworkLayer;
 			productReference = 933A4BF223C6FD2D00F4357F /* FANetworkLayer.app */;
 			productType = "com.apple.product-type.application";
@@ -137,6 +148,10 @@
 				Base,
 			);
 			mainGroup = 933A4BE923C6FD2D00F4357F;
+			packageReferences = (
+				933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */,
+				933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 933A4BF323C6FD2D00F4357F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -166,12 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933A4C0E23C6FD6700F4357F /* NetworkManager.swift in Sources */,
-				933A4C1123C6FD6700F4357F /* NetworkManager+Errors.swift in Sources */,
+				933A4C2823C80C4200F4357F /* FASessionManager.swift in Sources */,
+				933A4C0E23C6FD6700F4357F /* APIRoutable.swift in Sources */,
+				933A4C2423C70CAA00F4357F /* NSError+Addition.swift in Sources */,
+				933A4C1123C6FD6700F4357F /* APIRoutable+Errors.swift in Sources */,
 				933A4BFA23C6FD2D00F4357F /* ViewController.swift in Sources */,
 				933A4BF623C6FD2D00F4357F /* AppDelegate.swift in Sources */,
 				933A4BF823C6FD2D00F4357F /* SceneDelegate.swift in Sources */,
-				933A4C1023C6FD6700F4357F /* EndPoints.swift in Sources */,
 				933A4C0F23C6FD6700F4357F /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +384,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.5.1;
+			};
+		};
+		933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		933A4C1C23C706A500F4357F /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
+		933A4C1F23C706EF00F4357F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 933A4BEA23C6FD2D00F4357F /* Project object */;
 }

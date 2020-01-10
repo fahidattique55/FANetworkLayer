@@ -1,12 +1,12 @@
 //
 //  API.swift
-//  iOSConsumerApp
+//  FANetworkLayer
 //
-//  Created by fahid.attique on 06/01/2020.
-//  Copyright © 2020 iCarAsia. All rights reserved.
+//  Created by fahid.attique on 10/01/2020.
+//  Copyright © 2020 fahid.attique. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Alamofire
 import ObjectMapper
 
@@ -20,8 +20,9 @@ public struct API {
 
     //MARK:- Properties
 
+    public static var shouldShowDevLogs = false
     public var method: HTTPMethod
-    public var service: Directable
+    public var endPoint: URLDirectable
     public var parameters: [String: Any]?
     public var isAuthorized: Bool
     public var additionalHeaders: [String: String]?
@@ -29,10 +30,10 @@ public struct API {
 
     //MARK:- Life Cycle
 
-    init(method: HTTPMethod, service: Directable, parameters: [String: Any]?, isAuthorized: Bool, additionalHeaders: [String: String]?, encoding: ParameterEncoding) {
+    init(method: HTTPMethod, service: URLDirectable, parameters: [String: Any]?, isAuthorized: Bool, additionalHeaders: [String: String]?, encoding: ParameterEncoding) {
      
         self.method = method
-        self.service = service
+        self.endPoint = service
         self.parameters = parameters
         self.isAuthorized = isAuthorized
         self.additionalHeaders = additionalHeaders
@@ -46,5 +47,17 @@ public struct API {
         typealias simple = (_ result: APIResult<Any, Error>) -> Void
         typealias object = (_ result: APIResult<T?, Error>) -> Void
         typealias list = (_ result: APIResult<[T]?, Error>) -> Void
+    }
+}
+
+
+public protocol URLDirectable: MapContext {
+    func urlString() -> String
+}
+
+
+func devLog(_ value: String) {
+    if API.shouldShowDevLogs {
+        print(value)
     }
 }

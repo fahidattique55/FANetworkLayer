@@ -12,7 +12,7 @@ import ObjectMapper
 
 extension APIRoutable {
     
-    public func errorMessageFor(error: Error) -> String {
+    public func errorMessageFromAPIError(error: Error) -> String {
      
         var errorMessage = ""
         
@@ -20,17 +20,17 @@ extension APIRoutable {
             
             if let errorCode = afError.responseCode {
 
-                if errorCode == ErrorCodes.badGateWay {
-                    let prodMsg = ErrorMessage.badGateWay
-                    let devMsg  = "\(ErrorMessage.badGateWay) - \(error.localizedDescription)"
+                if errorCode == APIErrorCodes.badGateWay {
+                    let prodMsg = APIErrorMessage.badGateWay
+                    let devMsg  = "\(APIErrorMessage.badGateWay) - \(error.localizedDescription)"
                     return API.shouldShowDevLogs ? devMsg : prodMsg
                 }
             }
             
             switch afError {
             case .responseSerializationFailed(_):
-                let prodMsg = ErrorMessage.responseSerializationFailed
-                let devMsg  = "\(ErrorMessage.responseSerializationFailed) - \(error.localizedDescription)"
+                let prodMsg = APIErrorMessage.responseSerializationFailed
+                let devMsg  = "\(APIErrorMessage.responseSerializationFailed) - \(error.localizedDescription)"
                 errorMessage = API.shouldShowDevLogs ? devMsg : prodMsg
                 
             case .invalidURL(let url):
@@ -77,20 +77,20 @@ extension APIRoutable {
             switch error.code.rawValue {
                 
             case NSURLErrorTimedOut:
-                let prodMsg = ErrorMessage.requestTimedOut
-                let devMsg  = "\(ErrorMessage.requestTimedOut): \(error.localizedDescription)"
+                let prodMsg = APIErrorMessage.requestTimedOut
+                let devMsg  = "\(APIErrorMessage.requestTimedOut): \(error.localizedDescription)"
                 errorMessage = API.shouldShowDevLogs ? devMsg : prodMsg
                 break
 
             case NSURLErrorNetworkConnectionLost:
-                let prodMsg = ErrorMessage.internetLost
-                let devMsg  = "\(ErrorMessage.internetLost): \(error.localizedDescription)"
+                let prodMsg = APIErrorMessage.internetLost
+                let devMsg  = "\(APIErrorMessage.internetLost): \(error.localizedDescription)"
                 errorMessage = API.shouldShowDevLogs ? devMsg : prodMsg
                 break
 
             case NSURLErrorNotConnectedToInternet:
-                let prodMsg = ErrorMessage.noInternet
-                let devMsg  = "\(ErrorMessage.noInternet): \(error.localizedDescription)"
+                let prodMsg = APIErrorMessage.noInternet
+                let devMsg  = "\(APIErrorMessage.noInternet): \(error.localizedDescription)"
                 errorMessage = API.shouldShowDevLogs ? devMsg : prodMsg
                 break
                 
@@ -104,23 +104,18 @@ extension APIRoutable {
 }
 
 
-struct ErrorCodes {
+public struct APIErrorCodes {
     
-    static let badGateWay = 502
-    static let internalServerError = 500
+    public static let badGateWay = 502
+    public static let internalServerError = 500
 }
 
-struct ErrorMessage {
+public struct APIErrorMessage {
     
-    static let badGateWay = "We can't reach our servers. They should be back up shortly - if you are experiencing this issue for a prolonged time please contact us."
-    
-    static let responseSerializationFailed = "Hang tight! We're updating our servers. They should be back, better than ever, shortly."
-
-    static let requestTimedOut = "We couldn't get a response from our server. Please check that your connection is working and try again. If your internet is up and running please contact us."
-
-    static let internetLost = "The network connection was too weak. Please check your connection and try again."
-
-    static let noInternet = "Your internet connection was lost. Please check your connection is working and try again."
-
-    static let internalServerError = "You've found an unexpected error. Sorry about that. If you experience it repeatedly then please contact us."
+    public static let badGateWay = "We can't reach our servers. They should be back up shortly - if you are experiencing this issue for a prolonged time please contact us."
+    public static let responseSerializationFailed = "Hang tight! We're updating our servers. They should be back, better than ever, shortly."
+    public static let requestTimedOut = "We couldn't get a response from our server. Please check that your connection is working and try again. If your internet is up and running please contact us."
+    public static let internetLost = "The network connection was too weak. Please check your connection and try again."
+    public static let noInternet = "Your internet connection was lost. Please check your connection is working and try again."
+    public static let internalServerError = "You've found an unexpected error. Sorry about that. If you experience it repeatedly then please contact us."
 }

@@ -28,7 +28,7 @@ public protocol APIRoutable {
 
     //  Response validation for failure blocks
     func validate(dataResponse: DataResponse<Any>, with completion: @escaping API.Completion<Any?>.simple)
-    func errorMessageFor(error: Error) -> String
+    func errorMessageFromAPIError(error: Error) -> String
 }
 
 public extension APIRoutable {

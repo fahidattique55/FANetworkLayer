@@ -1,5 +1,5 @@
 //
-//  FASessionManager.swift
+//  APISessionManager.swift
 //  FANetworkLayer
 //
 //  Created by fahid.attique on 10/01/2020.

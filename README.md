@@ -25,7 +25,7 @@ Right now **FANetworkLayer** is only supported via swift package manager. You ca
 
 ## Usage
 
-Get ready to get shock - As you'll see just couple of lines of code giving you everything you need :-)
+**Get ready to get shock** - As you'll see just couple of lines of code giving you everything you need :-)
 
 
 ### Network Manager
@@ -78,7 +78,7 @@ You can request three types of responses from server.
 
 ```
 let api = API(method: .get, endPoint: MyEndPoint.allCountries, isAuthorized: false)
-myNetworkManager.requestList(api, mapperType: Country.self, parsingLevel: "") { (result) in
+MyNetworkManager.shared.requestList(api, mapperType: Country.self, parsingLevel: "") { (result) in
     
     switch result {
         
@@ -102,7 +102,7 @@ Please check files under [FANetworkLayer Usage Demo](https://github.com/fahidatt
 If you want to override any of the features of `APIRoutable` protocol, then just provide the implementation in your  `Network Manager` class as its conforming to this protocol.
 
 
-### Add New Features  
+### Add New Features
 
 If you want to add new functions then just add it in `Network Manager` class as its conforming to `APIRoutable` protocol.
 

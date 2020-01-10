@@ -12,11 +12,12 @@ let package = Package(
             targets: ["FANetworkLayer"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .branch("5.0.0-rc.3")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .branch("4.9.1")),
         .package(url: "https://github.com/tristanhimmelman/ObjectMapper.git", .branch("3.5.1"))
     ],
     targets: [
-        .target(name: "FANetworkLayer", path: "FANetworkLayer/Source")
+        .target(name: "FANetworkLayer", dependencies: ["Alamofire", "ObjectMapper"], path: "FANetworkLayer/Source")
+//        .target(name: "FANetworkLayer", path: "FANetworkLayer/Source")
     ]
 )
 

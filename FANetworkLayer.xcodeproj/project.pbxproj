@@ -22,6 +22,10 @@
 		933A4C2023C706EF00F4357F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 933A4C1F23C706EF00F4357F /* Alamofire */; };
 		933A4C2423C70CAA00F4357F /* NSError+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2323C70CAA00F4357F /* NSError+Addition.swift */; };
 		933A4C2823C80C4200F4357F /* FASessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2723C80C4200F4357F /* FASessionManager.swift */; };
+		933A4C2D23C84F9700F4357F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2C23C84F9700F4357F /* EndPoints.swift */; };
+		933A4C2F23C8501B00F4357F /* MyNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2E23C8501B00F4357F /* MyNetworkManager.swift */; };
+		933A4C3123C8508700F4357F /* CountriesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C3023C8508700F4357F /* CountriesAPIProvider.swift */; };
+		93BD70D923C853E1002DF812 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD70D823C853E1002DF812 /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		933A4C1323C6FF7300F4357F /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		933A4C2323C70CAA00F4357F /* NSError+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Addition.swift"; sourceTree = "<group>"; };
 		933A4C2723C80C4200F4357F /* FASessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FASessionManager.swift; sourceTree = "<group>"; };
+		933A4C2C23C84F9700F4357F /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		933A4C2E23C8501B00F4357F /* MyNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNetworkManager.swift; sourceTree = "<group>"; };
+		933A4C3023C8508700F4357F /* CountriesAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesAPIProvider.swift; sourceTree = "<group>"; };
+		93BD70D823C853E1002DF812 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,7 @@
 				933A4BF523C6FD2D00F4357F /* AppDelegate.swift */,
 				933A4BF723C6FD2D00F4357F /* SceneDelegate.swift */,
 				933A4BF923C6FD2D00F4357F /* ViewController.swift */,
+				933A4C3223C8508C00F4357F /* FANetworkLayer Usage Demo */,
 				933A4BFB23C6FD2D00F4357F /* Main.storyboard */,
 				933A4BFE23C6FD2E00F4357F /* Assets.xcassets */,
 				933A4C0023C6FD2E00F4357F /* LaunchScreen.storyboard */,
@@ -98,6 +107,17 @@
 				933A4C2323C70CAA00F4357F /* NSError+Addition.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		933A4C3223C8508C00F4357F /* FANetworkLayer Usage Demo */ = {
+			isa = PBXGroup;
+			children = (
+				933A4C2C23C84F9700F4357F /* EndPoints.swift */,
+				933A4C2E23C8501B00F4357F /* MyNetworkManager.swift */,
+				933A4C3023C8508700F4357F /* CountriesAPIProvider.swift */,
+				93BD70D823C853E1002DF812 /* Country.swift */,
+			);
+			path = "FANetworkLayer Usage Demo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,8 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				933A4C2823C80C4200F4357F /* FASessionManager.swift in Sources */,
+				933A4C2D23C84F9700F4357F /* EndPoints.swift in Sources */,
+				933A4C2F23C8501B00F4357F /* MyNetworkManager.swift in Sources */,
 				933A4C0E23C6FD6700F4357F /* APIRoutable.swift in Sources */,
+				93BD70D923C853E1002DF812 /* Country.swift in Sources */,
 				933A4C2423C70CAA00F4357F /* NSError+Addition.swift in Sources */,
+				933A4C3123C8508700F4357F /* CountriesAPIProvider.swift in Sources */,
 				933A4C1123C6FD6700F4357F /* APIRoutable+Errors.swift in Sources */,
 				933A4BFA23C6FD2D00F4357F /* ViewController.swift in Sources */,
 				933A4BF623C6FD2D00F4357F /* AppDelegate.swift in Sources */,

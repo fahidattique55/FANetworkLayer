@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        CountriesAPIProvider().getAllCountries(completion: { (countries) in
+            print(countries)
+        }) { (error) in
+            print(error)
+        }
     }
 
 

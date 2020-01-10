@@ -25,10 +25,86 @@ Right now **FANetworkLayer** is only supported via swift package manager. You ca
 
 ## Usage
 
+Get ready to get shock - As you'll see just couple of lines of code giving you everything you need :-)
+
+
+### Network Manager
+
+Create your network manager class and conform it with `APIRoutable` protocol so it can access features in `FANetworkLayer`
+
+```
+class MyNetworkManager: APIRoutable {
+
+    var sessionManager: APISessionManager = APISessionManager()
+    static let shared = MyNetworkManager()
+    private init() {}
+}
+```
+
+### Endpoints
+
+Create your endpoints and conform it with `URLDirectable` protocol so you can provide full  `urlString` for end points.
+
+```
+enum MyEndPoint: URLDirectable {
+    
+    case allCountries
+    
+    func urlString() -> String {
+     
+        var endpoint = ""
+        
+        switch (self) {
+                        
+        case .allCountries:
+            endpoint = "all"
+            
+        }
+        
+        return "https://restcountries.eu/rest/v2/" + endpoint
+    }
+}
+```
+
+### Use Now
+
+Use your newly created network manager by providing it API information as given in example below.
+
+You can request three types of responses from server.
+
+1. Simple Request
+2. Request Object
+3. Request List
+
+```
+let api = API(method: .get, endPoint: MyEndPoint.allCountries, isAuthorized: false)
+myNetworkManager.requestList(api, mapperType: Country.self, parsingLevel: "") { (result) in
+    
+    switch result {
+        
+    case .success(let value):
+        completion(value)
+        break
+
+    case .failure(let error):
+        failure(error)
+        break
+
+    }
+}
+```
+
 Please check files under [FANetworkLayer Usage Demo](https://github.com/fahidattique55/FANetworkLayer/tree/master/FANetworkLayer/FANetworkLayer%20Usage%20Demo) folder to understand how it's working.
 
 
- P.S: Get ready to get shock - As you'll see just couple of lines of code giving you everything you need :)
+### Override Behavior
+
+If you want to override any of the features of `APIRoutable` protocol, then just provide the implementation in your  `Network Manager` class as its conforming to this protocol.
+
+
+### Add New 
+
+If you want to add new functions then just add it in `Network Manager` class as its conforming to `APIRoutable` protocol.
 
 
 ## License

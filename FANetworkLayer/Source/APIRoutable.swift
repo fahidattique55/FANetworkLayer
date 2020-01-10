@@ -47,14 +47,14 @@ public extension APIRoutable {
     func validate(dataResponse: DataResponse<Any>, with completion: @escaping API.Completion<Any?>.simple) {
 
         if let error = dataResponse.error {
-            let errorMessage = errorMessageFor(error: error)
+            let errorMessage = errorMessageFromAPIError(error: error)
             if !errorMessage.isEmpty {
                 completion(.failure(NSError(errorMessage: errorMessage, code: dataResponse.response?.statusCode)))
                 return
             }
         }
         guard let value = dataResponse.value else {
-            let message = API.shouldShowDevLogs ? "Response Value from server is nil." : ErrorMessage.internalServerError
+            let message = API.shouldShowDevLogs ? "Response Value from server is nil." : APIErrorMessage.internalServerError
             return completion(.failure(NSError(errorMessage: message)))
             
         }
@@ -73,7 +73,7 @@ public extension APIRoutable {
                         return
                     }
                 }
-                let message = API.shouldShowDevLogs ? ErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Object."
+                let message = API.shouldShowDevLogs ? APIErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Object."
                 completion(.failure(NSError(errorMessage: message)))
                 break
             case .failure(let error):
@@ -115,7 +115,7 @@ public extension APIRoutable {
                         }
                     }
                 }
-                let message = API.shouldShowDevLogs ? ErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Array."
+                let message = API.shouldShowDevLogs ? APIErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Array."
                 completion(.failure(NSError(errorMessage: message)))
                 break
             case .failure(let error):

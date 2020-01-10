@@ -97,12 +97,12 @@ myNetworkManager.requestList(api, mapperType: Country.self, parsingLevel: "") { 
 Please check files under [FANetworkLayer Usage Demo](https://github.com/fahidattique55/FANetworkLayer/tree/master/FANetworkLayer/FANetworkLayer%20Usage%20Demo) folder to understand how it's working.
 
 
-### Override Behavior
+### Override Existing Features
 
 If you want to override any of the features of `APIRoutable` protocol, then just provide the implementation in your  `Network Manager` class as its conforming to this protocol.
 
 
-### Add New 
+### Add New Features  
 
 If you want to add new functions then just add it in `Network Manager` class as its conforming to `APIRoutable` protocol.
 

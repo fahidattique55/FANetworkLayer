@@ -25,8 +25,9 @@ Right now **FANetworkLayer** is only supported via swift package manager. You ca
 
 ## Usage
 
-- Please check files under [FANetworkLayer Usage Demo](https://github.com/fahidattique55/FANetworkLayer/tree/master/FANetworkLayer/FANetworkLayer%20Usage%20Demo) folder to understand how it's working.
- 
+Please check files under [FANetworkLayer Usage Demo](https://github.com/fahidattique55/FANetworkLayer/tree/master/FANetworkLayer/FANetworkLayer%20Usage%20Demo) folder to understand how it's working.
+
+
  P.S: Get ready to get shock - As you'll see just couple of lines of code giving you everything you need :)
 
 

@@ -103,6 +103,7 @@ extension APIRoutable {
     }
 }
 
+
 struct ErrorCodes {
     
     static let badGateWay = 502

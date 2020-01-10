@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public class FASessionManager: SessionManager {
+public class APISessionManager: SessionManager {
 
     public override func request(_ urlRequest: URLRequestConvertible) -> DataRequest {
      

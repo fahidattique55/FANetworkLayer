@@ -92,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				933A4C0B23C6FD6600F4357F /* API.swift */,
-				933A4C2723C80C4200F4357F /* FASessionManager.swift */,
 				933A4C0A23C6FD6600F4357F /* APIRoutable.swift */,
+				933A4C2723C80C4200F4357F /* FASessionManager.swift */,
 				933A4C0D23C6FD6700F4357F /* APIRoutable+Errors.swift */,
 				933A4C2323C70CAA00F4357F /* NSError+Addition.swift */,
 			);

@@ -21,32 +21,35 @@ public struct API {
     //MARK:- Properties
 
     public static var shouldShowDevLogs = false
+    public static var errorDomain = "com.fahid.FANetworkLayer"
+
     public var method: HTTPMethod
     public var endPoint: URLDirectable
-    public var parameters: [String: Any]?
     public var isAuthorized: Bool
+    public var parameters: [String: Any]?
     public var additionalHeaders: [String: String]?
-    public var encoding: ParameterEncoding!
+    public var encoding: ParameterEncoding
 
     //MARK:- Life Cycle
-
-    init(method: HTTPMethod, service: URLDirectable, parameters: [String: Any]?, isAuthorized: Bool, additionalHeaders: [String: String]?, encoding: ParameterEncoding) {
+    
+    public init(method: HTTPMethod, endPoint: URLDirectable, isAuthorized: Bool, parameters: [String: Any]? = nil, additionalHeaders: [String: String]? = nil, encoding: ParameterEncoding = URLEncoding.default) {
      
         self.method = method
-        self.endPoint = service
+        self.endPoint = endPoint
         self.parameters = parameters
         self.isAuthorized = isAuthorized
         self.additionalHeaders = additionalHeaders
         self.encoding = encoding
+        
     }
 
     //MARK:- Others
 
-    struct Completion<T> {
+    public struct Completion<T> {
         
-        typealias simple = (_ result: APIResult<Any, Error>) -> Void
-        typealias object = (_ result: APIResult<T?, Error>) -> Void
-        typealias list = (_ result: APIResult<[T]?, Error>) -> Void
+        public typealias simple = (_ result: APIResult<Any, Error>) -> Void
+        public typealias object = (_ result: APIResult<T?, Error>) -> Void
+        public typealias list = (_ result: APIResult<[T]?, Error>) -> Void
     }
 }
 
@@ -56,7 +59,7 @@ public protocol URLDirectable: MapContext {
 }
 
 
-func devLog(_ value: String) {
+public func devLog(_ value: String) {
     if API.shouldShowDevLogs {
         print(value)
     }

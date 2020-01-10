@@ -12,6 +12,6 @@ public extension NSError {
     convenience init(errorMessage: String, code: Int? = nil) {
         var errorCode = -1
         if let code = code { errorCode = code }
-        self.init(domain: networkManager.domain, code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+        self.init(domain: API.errorDomain, code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
     }
 }

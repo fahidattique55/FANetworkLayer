@@ -10,11 +10,9 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-protocol APIRoutable {
+public protocol APIRoutable {
 
-    
-    var sessionManager: FASessionManager {get}  //  Session manager must be provided by interface conforming the protocol
-    var errorDomain: String {get}   //  Provide domain for errors
+    var sessionManager: APISessionManager {get}  //  Session manager must be provided by interface conforming the protocol
     
     //  Gives you simple Alamofire DataResponse<Any>.value
     func request(_ api: API, completion: @escaping API.Completion<Any?>.simple) -> Request?
@@ -33,7 +31,7 @@ protocol APIRoutable {
     func errorMessageFor(error: Error) -> String
 }
 
-extension APIRoutable {
+public extension APIRoutable {
     
     @discardableResult
     func request(_ api: API, completion: @escaping API.Completion<Any?>.simple) -> Request? {

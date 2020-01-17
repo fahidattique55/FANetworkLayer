@@ -15,3 +15,24 @@ public extension NSError {
         self.init(domain: API.errorDomain, code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
     }
 }
+
+public extension Error {
+    
+    var isServerResponseNil: Bool {
+        get {
+            if let nsError = self as? NSError {
+                return nsError.code == APIErrorCodes.responseNil
+            }
+            return false
+        }
+    }
+    
+    var isServerTokenExpired: Bool {
+        get {
+            if let nsError = self as? NSError {
+                return nsError.code == Int(APIErrorCodes.tokenExpired)
+            }
+            return false
+        }
+    }
+}

@@ -48,8 +48,8 @@ public struct API {
     public struct Completion<T> {
         
         public typealias simple = (_ result: APIResult<Any, Error>) -> Void
-        public typealias object = (_ result: APIResult<T?, Error>) -> Void
-        public typealias list = (_ result: APIResult<[T]?, Error>) -> Void
+        public typealias object = (_ result: APIResult<T, Error>) -> Void
+        public typealias list = (_ result: APIResult<[T], Error>) -> Void
     }
 }
 

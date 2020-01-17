@@ -55,7 +55,7 @@ public extension APIRoutable {
         }
         guard let value = dataResponse.value else {
             let message = API.shouldShowDevLogs ? "Response Value from server is nil." : APIErrorMessage.internalServerError
-            return completion(.failure(NSError(errorMessage: message)))
+            return completion(.failure(NSError(errorMessage: message, code: APIErrorCodes.responseNil)))
             
         }
         completion(.success(value))
@@ -73,6 +73,13 @@ public extension APIRoutable {
                         return
                     }
                 }
+                else if let resultValue = result as? String {
+                    if let resultObject = T(JSONString: resultValue) {
+                        completion(.success(resultObject))
+                        return
+                    }
+                }
+
                 let message = API.shouldShowDevLogs ? APIErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Object."
                 completion(.failure(NSError(errorMessage: message)))
                 break

@@ -108,6 +108,8 @@ public struct APIErrorCodes {
     
     public static let badGateWay = 502
     public static let internalServerError = 500
+    public static let responseNil = 1000
+    public static let tokenExpired = 1001
 }
 
 public struct APIErrorMessage {

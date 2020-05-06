@@ -22,6 +22,8 @@ public protocol APIRoutable {
 
     //  Gives you simple Alamofire DataResponse<Any>.value parsed in [T]? array
     func requestList<T: Mappable>(_ api: API, mapperType: T.Type, parsingLevel: String, completion: @escaping API.Completion<T>.list) -> Request?
+    
+    func requestMultipart<T: Mappable>(_ api: API, mapperType: T.Type, completion: @escaping API.Completion<T>.object)
 
     //  Interface conforming should provide implementation of it
     func getHeaders(_ authorized: Bool, _ additionalHeaders: [String: String]?) -> [String : String]?
@@ -132,6 +134,53 @@ public extension APIRoutable {
         }
         return alamofireRequest
     }
+    
+    func requestMultipart<T: Mappable>(_ api: API, mapperType: T.Type, completion: @escaping API.Completion<T>.object) {
+        let urlString = api.endPoint.urlString()
+
+        sessionManager.upload(multipartFormData: { (multipartFormData) in
+            if let parameters = api.parameters {
+                for (key, value) in parameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+            }
+            if let fileData = api.filesData {
+                for file in fileData {
+                    multipartFormData.append(file.fileData, withName: file.name, fileName: file.fullnameWithExtension, mimeType: file.mimeType)
+                }
+            }
+        }, to:urlString,headers: api.additionalHeaders)
+        { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    
+                    if let resultValue = response.value as? [String: Any] {
+                        if let resultObject = Mapper<T>(context: api.endPoint).map(JSON: resultValue) {
+                            completion(.success(resultObject))
+                            return
+                        }
+                    }
+                    else if let resultValue = response.value as? String {
+                        if let resultObject = T(JSONString: resultValue) {
+                            completion(.success(resultObject))
+                            return
+                        }
+                    }
+
+                    let message = API.shouldShowDevLogs ? APIErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Object."
+                    completion(.failure(NSError(errorMessage: message)))
+                   
+                    
+                }
+            case .failure(let error):
+                completion(.failure(error))
+                
+            }
+
+        }
+    }
+    
 
     func getHeaders(_ authorized: Bool, _ additionalHeaders: [String: String]?) -> [String : String]? {
         

@@ -17,12 +17,18 @@ public protocol APIRoutable {
     //  Gives you simple Alamofire DataResponse<Any>.value
     func request(_ api: API, completion: @escaping API.Completion<Any?>.simple) -> Request?
     
+    //  Gives you simple AlamofireMultipart DataResponse<Any>.value
+    func requestMultiPart(_ api: API, progressClosure: @escaping (Progress) -> Void ,completion: @escaping API.Completion<Any?>.simple)
+
     //  Gives you simple Alamofire DataResponse<Any>.value parsed in T?
     func requestObject<T: Mappable>(_ api: API, mapperType: T.Type, completion: @escaping API.Completion<T>.object) -> Request?
 
     //  Gives you simple Alamofire DataResponse<Any>.value parsed in [T]? array
     func requestList<T: Mappable>(_ api: API, mapperType: T.Type, parsingLevel: String, completion: @escaping API.Completion<T>.list) -> Request?
-
+    
+    //  Gives you simple AlamofireMultipart DataResponse<Any>.value parsed in T?
+    func requestMultipart<T: Mappable>(_ api: API, mapperType: T.Type, progressClosure: @escaping (Progress) -> Void , completion: @escaping API.Completion<T>.object)
+    
     //  Interface conforming should provide implementation of it
     func getHeaders(_ authorized: Bool, _ additionalHeaders: [String: String]?) -> [String : String]?
 
@@ -44,6 +50,43 @@ public extension APIRoutable {
         return alamofireRequest
     }
 
+    func requestMultiPart(_ api: API, progressClosure: @escaping (Progress) -> Void ,completion: @escaping API.Completion<Any?>.simple) {
+        if let params = api.parameters { devLog("💛💛\(params)💛💛") }
+        let urlString = api.endPoint.urlString()
+        
+        sessionManager.upload(multipartFormData: { (multipartFormData) in
+            if let parameters = api.parameters {
+                for (key, value) in parameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+            }
+            if let fileData = api.filesData {
+                for file in fileData {
+                    multipartFormData.append(file.fileData, withName: file.name, fileName: file.fullnameWithExtension, mimeType: file.mimeType)
+                }
+            }
+        }, to:urlString,headers: api.additionalHeaders)
+        { (result) in
+            switch result{
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress { (progress) in
+                    progressClosure(progress)
+                }
+                
+                upload.responseJSON { response in
+                    self.validate(dataResponse: response, with: completion)
+                    
+                }
+            case .failure(let error):
+                completion(.failure(error))
+                
+            }
+        }
+        
+
+    }
+    
     func validate(dataResponse: DataResponse<Any>, with completion: @escaping API.Completion<Any?>.simple) {
 
         if let error = dataResponse.error {
@@ -132,6 +175,38 @@ public extension APIRoutable {
         }
         return alamofireRequest
     }
+    
+    func requestMultipart<T: Mappable>(_ api: API, mapperType: T.Type, progressClosure: @escaping (Progress) -> Void , completion: @escaping API.Completion<T>.object) {
+        
+        self.requestMultiPart(api, progressClosure: progressClosure) { (response) in
+            switch response {
+                
+            case .success(let result):
+                if let resultValue = result as? [String: Any] {
+                    if let resultObject = Mapper<T>(context: api.endPoint).map(JSON: resultValue) {
+                        completion(.success(resultObject))
+                        return
+                    }
+                }
+                else if let resultValue = result as? String {
+                    if let resultObject = T(JSONString: resultValue) {
+                        completion(.success(resultObject))
+                        return
+                    }
+                }
+
+                let message = API.shouldShowDevLogs ? APIErrorMessage.responseSerializationFailed : "Can't parse JSON because its not a JSON Object."
+                
+                completion(.failure(NSError(errorMessage: message)))
+                
+                
+            case .failure(let error):
+                completion(.failure(error))
+                
+            }
+        }
+    }
+    
 
     func getHeaders(_ authorized: Bool, _ additionalHeaders: [String: String]?) -> [String : String]? {
         

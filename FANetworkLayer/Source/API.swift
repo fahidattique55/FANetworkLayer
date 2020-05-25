@@ -29,10 +29,11 @@ public struct API {
     public var parameters: [String: Any]?
     public var additionalHeaders: [String: String]?
     public var encoding: ParameterEncoding
-
+    public var filesData: [multipartFile]? // if using multipart then put list of files to upload here
+    
     //MARK:- Life Cycle
     
-    public init(method: HTTPMethod, endPoint: URLDirectable, isAuthorized: Bool, parameters: [String: Any]? = nil, additionalHeaders: [String: String]? = nil, encoding: ParameterEncoding = URLEncoding.default) {
+    public init(method: HTTPMethod, endPoint: URLDirectable, isAuthorized: Bool, parameters: [String: Any]? = nil, additionalHeaders: [String: String]? = nil, encoding: ParameterEncoding = URLEncoding.default, filesData: [multipartFile]? = nil) {
      
         self.method = method
         self.endPoint = endPoint
@@ -40,7 +41,7 @@ public struct API {
         self.isAuthorized = isAuthorized
         self.additionalHeaders = additionalHeaders
         self.encoding = encoding
-        
+        self.filesData = filesData
     }
 
     //MARK:- Others
@@ -53,6 +54,22 @@ public struct API {
     }
 }
 
+public struct multipartFile {
+    //MARK:- Properties
+
+    public var name = "image"
+    public var fullnameWithExtension = "image.jpg"
+    public var mimeType = "image/jpeg"
+    public var fileData: Data!
+    //MARK:- Life Cycle
+    
+    public init(fileName: String, fileNameWithExtension: String, fileMimeType: String, fileData: Data) {
+        self.name = fileName
+        self.fullnameWithExtension = fileNameWithExtension
+        self.mimeType = fileMimeType
+        self.fileData = fileData
+    }
+}
 
 public protocol URLDirectable: MapContext {
     func urlString() -> String

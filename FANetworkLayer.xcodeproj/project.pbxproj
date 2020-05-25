@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,17 +18,19 @@
 		933A4C1123C6FD6700F4357F /* APIRoutable+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C0D23C6FD6700F4357F /* APIRoutable+Errors.swift */; };
 		933A4C1523C6FF7300F4357F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 933A4C1223C6FF7200F4357F /* README.md */; };
 		933A4C1623C6FF7300F4357F /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 933A4C1323C6FF7300F4357F /* LICENSE.txt */; };
-		933A4C1D23C706A500F4357F /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 933A4C1C23C706A500F4357F /* ObjectMapper */; };
-		933A4C2023C706EF00F4357F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 933A4C1F23C706EF00F4357F /* Alamofire */; };
 		933A4C2423C70CAA00F4357F /* NSError+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2323C70CAA00F4357F /* NSError+Addition.swift */; };
 		933A4C2D23C84F9700F4357F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2C23C84F9700F4357F /* EndPoints.swift */; };
 		933A4C2F23C8501B00F4357F /* MyNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C2E23C8501B00F4357F /* MyNetworkManager.swift */; };
 		933A4C3123C8508700F4357F /* CountriesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933A4C3023C8508700F4357F /* CountriesAPIProvider.swift */; };
 		93BD70D923C853E1002DF812 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD70D823C853E1002DF812 /* Country.swift */; };
 		93BD70DD23C8627F002DF812 /* APISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BD70DC23C8627F002DF812 /* APISessionManager.swift */; };
+		ACBB73B3B5B0C5C85B824826 /* Pods_FANetworkLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C580CD0A1DD15E51AE19F5F /* Pods_FANetworkLayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E5263B6054AE889CA5A02D /* Pods-FANetworkLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FANetworkLayer.release.xcconfig"; path = "Target Support Files/Pods-FANetworkLayer/Pods-FANetworkLayer.release.xcconfig"; sourceTree = "<group>"; };
+		1D465F537DE4A2E531842BB6 /* Pods-FANetworkLayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FANetworkLayer.debug.xcconfig"; path = "Target Support Files/Pods-FANetworkLayer/Pods-FANetworkLayer.debug.xcconfig"; sourceTree = "<group>"; };
+		4C580CD0A1DD15E51AE19F5F /* Pods_FANetworkLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FANetworkLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		933A4BF223C6FD2D00F4357F /* FANetworkLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FANetworkLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		933A4BF523C6FD2D00F4357F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		933A4BF723C6FD2D00F4357F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,19 +57,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933A4C1D23C706A500F4357F /* ObjectMapper in Frameworks */,
-				933A4C2023C706EF00F4357F /* Alamofire in Frameworks */,
+				ACBB73B3B5B0C5C85B824826 /* Pods_FANetworkLayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		736C6A3DD0AA071B3D51625A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D465F537DE4A2E531842BB6 /* Pods-FANetworkLayer.debug.xcconfig */,
+				15E5263B6054AE889CA5A02D /* Pods-FANetworkLayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		933A4BE923C6FD2D00F4357F = {
 			isa = PBXGroup;
 			children = (
 				933A4BF423C6FD2D00F4357F /* FANetworkLayer */,
 				933A4BF323C6FD2D00F4357F /* Products */,
+				736C6A3DD0AA071B3D51625A /* Pods */,
+				DFE4D9265C81F3C3CC0283E7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +132,14 @@
 			path = "FANetworkLayer Usage Demo";
 			sourceTree = "<group>";
 		};
+		DFE4D9265C81F3C3CC0283E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C580CD0A1DD15E51AE19F5F /* Pods_FANetworkLayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 933A4C0623C6FD2E00F4357F /* Build configuration list for PBXNativeTarget "FANetworkLayer" */;
 			buildPhases = (
+				6E1EA245387992733BB23193 /* [CP] Check Pods Manifest.lock */,
 				933A4BEE23C6FD2D00F4357F /* Sources */,
 				933A4BEF23C6FD2D00F4357F /* Frameworks */,
 				933A4BF023C6FD2D00F4357F /* Resources */,
+				D691ED541A256086AEC5690B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -137,8 +159,6 @@
 			);
 			name = FANetworkLayer;
 			packageProductDependencies = (
-				933A4C1C23C706A500F4357F /* ObjectMapper */,
-				933A4C1F23C706EF00F4357F /* Alamofire */,
 			);
 			productName = FANetworkLayer;
 			productReference = 933A4BF223C6FD2D00F4357F /* FANetworkLayer.app */;
@@ -169,8 +189,6 @@
 			);
 			mainGroup = 933A4BE923C6FD2D00F4357F;
 			packageReferences = (
-				933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */,
-				933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 933A4BF323C6FD2D00F4357F /* Products */;
 			projectDirPath = "";
@@ -195,6 +213,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E1EA245387992733BB23193 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FANetworkLayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D691ED541A256086AEC5690B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FANetworkLayer/Pods-FANetworkLayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FANetworkLayer/Pods-FANetworkLayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FANetworkLayer/Pods-FANetworkLayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		933A4BEE23C6FD2D00F4357F /* Sources */ = {
@@ -354,6 +414,7 @@
 		};
 		933A4C0723C6FD2E00F4357F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D465F537DE4A2E531842BB6 /* Pods-FANetworkLayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +432,7 @@
 		};
 		933A4C0823C6FD2E00F4357F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15E5263B6054AE889CA5A02D /* Pods-FANetworkLayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -408,38 +470,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
-			requirement = {
-				kind = exactVersion;
-				version = 3.5.1;
-			};
-		};
-		933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.9.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		933A4C1C23C706A500F4357F /* ObjectMapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 933A4C1B23C706A500F4357F /* XCRemoteSwiftPackageReference "ObjectMapper" */;
-			productName = ObjectMapper;
-		};
-		933A4C1F23C706EF00F4357F /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 933A4C1E23C706EF00F4357F /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 933A4BEA23C6FD2D00F4357F /* Project object */;
 }
